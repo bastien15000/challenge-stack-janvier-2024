@@ -23,6 +23,7 @@ body {
 header {
   background: var(--primary);
   filter: drop-shadow(0 4px 4px rgba(232, 19, 134, 0.15));
+  text-align: center;
 }
 
 a {
