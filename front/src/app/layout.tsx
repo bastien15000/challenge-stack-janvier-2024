@@ -26,7 +26,9 @@ export default function RootLayout({
             height={80}
           />
         </header>
-        {children}
+        <div style={{ padding: "6rem" }}>
+          {children}
+        </div>
       </body>
     </html>
   )
