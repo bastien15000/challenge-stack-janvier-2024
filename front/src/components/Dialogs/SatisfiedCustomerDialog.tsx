@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
 import { StyledButton } from "@/components/Button/StyledButton"
+import { SelectBox } from "@/components/Input/SelectBox"
 import { Input } from "@/components/Input/Input"
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
@@ -66,23 +67,11 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           >
             <CloseIcon/>
           </IconButton>
-          <Input label="Num" type="number"/>
-          <Input label="Combien d'unitées cassées" type="number"/>
-
+          <SelectBox label="Observation" options={[{ value: 'Casse', label: 'Unité cassé' },{ value: 'Incomplet', label: 'Livraison incompléte' },{ value: 'Retard', label: 'Livraison en retard' }]}/>
+          <Input label="Quantité" type="number"/>
           <FormControl>
-            <FormLabel
-              id="demo-row-radio-buttons-group-label"
-            >
-              La totalité de la commande à t-elle été livrée ?
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel value="Oui" control={<Radio />} label="Oui" />
-              <FormControlLabel value="Non" control={<Radio />} label="Non" />
-            </RadioGroup>
+            
+            
             <br/>
             <Typography component="legend">Note du livreur</Typography>
             <Rating

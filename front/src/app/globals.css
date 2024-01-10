@@ -30,3 +30,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+label {
+  z-index: 0!important;
+}
