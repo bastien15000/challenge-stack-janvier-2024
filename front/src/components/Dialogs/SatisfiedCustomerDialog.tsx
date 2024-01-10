@@ -29,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export const SatisfiedCustomerDialog = React.FC = () => {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState<number | null>(2)
-
+  const options = [{ value: 'Casse', label: 'Unité cassé' },{ value: 'Incomplet', label: 'Livraison incompléte' },{ value: 'Retard', label: 'Livraison en retard' }];
   const handleClickOpen = () => {
     setOpen(true)
   }
@@ -67,8 +67,12 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           >
             <CloseIcon/>
           </IconButton>
-          <SelectBox label="Observation" options={[{ value: 'Casse', label: 'Unité cassé' },{ value: 'Incomplet', label: 'Livraison incompléte' },{ value: 'Retard', label: 'Livraison en retard' }]}/>
-          <Input label="Quantité" type="number"/>
+          <div id="ObservationBlock">
+            <SelectBox id="Observation1" label="Observation" options={options}/>
+            <br/> 
+            <SelectBox id="Observation2" label="Observation" options={options}/>
+          </div>
+
           <FormControl>
             
             
