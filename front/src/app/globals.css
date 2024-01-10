@@ -38,3 +38,8 @@ label {
 legend {
   width: 100%!important;
 }
+
+.MuiRating-root label {
+  width: 20%;
+  margin-left: 10%;
+}
