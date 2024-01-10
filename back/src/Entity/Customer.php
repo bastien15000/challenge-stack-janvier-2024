@@ -26,7 +26,7 @@ class Customer extends User
     #[ORM\Column(length: 255)]
     private ?string $city = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
+    #[ORM\Column]
     private ?int $zipcode = null;
 
     public function __construct()
