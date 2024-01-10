@@ -10,5 +10,5 @@ export const Input: React.FC<InputProps> = (props) => {
 export interface InputProps {
   label: string,
   type: string,
-  id: string,
+  id?: string,
 }
