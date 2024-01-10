@@ -6,6 +6,12 @@ use App\Repository\NotifRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+enum Type: string {
+    case Info = "info";
+    case Warning = "attention";
+    case Alert = "alerte";
+}
+
 #[ORM\Entity(repositoryClass: NotifRepository::class)]
 class Notif
 {
@@ -16,14 +22,14 @@ class Notif
 
     #[ORM\ManyToOne(inversedBy: 'notifs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Customer $Customer = null;
+    private ?Customer $customer = null;
 
     #[ORM\ManyToOne(inversedBy: 'notifs')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Order $Order_ = null;
+    private ?Order $order_ = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $state = null;
+    #[ORM\Column(type: 'string', enumType: Type::class)]
+    private ?Type $type = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $value = null;
@@ -35,38 +41,36 @@ class Notif
 
     public function getCustomer(): ?Customer
     {
-        return $this->Customer;
+        return $this->customer;
     }
 
-    public function setCustomer(?Customer $Customer): static
+    public function setCustomer(?Customer $customer): static
     {
-        $this->Customer = $Customer;
+        $this->customer = $customer;
 
         return $this;
     }
 
     public function getOrder(): ?Order
     {
-        return $this->Order_;
+        return $this->order_;
     }
 
-    public function setOrder(?Order $Order_): static
+    public function setOrder(?Order $order_): static
     {
-        $this->Order_ = $Order_;
+        $this->order_ = $order_;
 
         return $this;
     }
 
-    public function getState(): ?string
+    public function getType(): Type
     {
-        return $this->state;
+        return $this->type;
     }
 
-    public function setState(string $state): static
+    public function setType(Type $type): void
     {
-        $this->state = $state;
-
-        return $this;
+        $this->type = $type;
     }
 
     public function getValue(): ?string

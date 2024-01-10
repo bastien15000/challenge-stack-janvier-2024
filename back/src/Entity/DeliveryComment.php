@@ -16,7 +16,7 @@ class DeliveryComment
 
     #[ORM\OneToOne(inversedBy: 'deliveryComment', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Delivery $delivery_id = null;
+    private ?Delivery $delivery = null;
 
     #[ORM\Column]
     private ?int $km_start = null;
@@ -38,14 +38,14 @@ class DeliveryComment
         return $this->id;
     }
 
-    public function getDeliveryId(): ?Delivery
+    public function getDelivery(): ?Delivery
     {
-        return $this->delivery_id;
+        return $this->delivery;
     }
 
-    public function setDeliveryId(Delivery $delivery_id): static
+    public function setDelivery(Delivery $delivery): static
     {
-        $this->delivery_id = $delivery_id;
+        $this->delivery = $delivery;
 
         return $this;
     }

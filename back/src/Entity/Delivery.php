@@ -18,15 +18,15 @@ class Delivery
 
     #[ORM\ManyToOne(inversedBy: 'deliveries')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Deliveryman $deliveryman_id = null;
+    private ?Deliveryman $deliveryman = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToOne(mappedBy: 'delivery_id', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'delivery', cascade: ['persist', 'remove'])]
     private ?DeliveryComment $deliveryComment = null;
 
-    #[ORM\OneToMany(mappedBy: 'Delivery', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'delivery', targetEntity: Order::class)]
     private Collection $orders;
 
     public function __construct()
@@ -39,14 +39,14 @@ class Delivery
         return $this->id;
     }
 
-    public function getDeliverymanId(): ?Deliveryman
+    public function getDeliveryman(): ?Deliveryman
     {
-        return $this->deliveryman_id;
+        return $this->deliveryman;
     }
 
-    public function setDeliverymanId(?Deliveryman $deliveryman_id): static
+    public function setDeliveryman(?Deliveryman $deliveryman): static
     {
-        $this->deliveryman_id = $deliveryman_id;
+        $this->deliveryman = $deliveryman;
 
         return $this;
     }
@@ -71,8 +71,8 @@ class Delivery
     public function setDeliveryComment(DeliveryComment $deliveryComment): static
     {
         // set the owning side of the relation if necessary
-        if ($deliveryComment->getDeliveryId() !== $this) {
-            $deliveryComment->setDeliveryId($this);
+        if ($deliveryComment->getDelivery() !== $this) {
+            $deliveryComment->setDelivery($this);
         }
 
         $this->deliveryComment = $deliveryComment;

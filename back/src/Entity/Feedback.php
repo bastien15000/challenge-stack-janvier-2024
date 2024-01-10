@@ -21,17 +21,17 @@ class Feedback
     private ?int $broken_items = null;
 
     #[ORM\Column]
-    private ?bool $is_fullfilled = null;
+    private ?bool $fullfilled = null;
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $deliveryman_mark = null;
 
     #[ORM\Column]
-    private ?bool $is_late = null;
+    private ?bool $late = null;
 
     #[ORM\OneToOne(inversedBy: 'feedback', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Order $Order_ = null;
+    private ?Order $order_ = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comment = null;
@@ -67,12 +67,12 @@ class Feedback
 
     public function isIsFullfilled(): ?bool
     {
-        return $this->is_fullfilled;
+        return $this->fullfilled;
     }
 
-    public function setIsFullfilled(bool $is_fullfilled): static
+    public function setFullfilled(bool $fullfilled): static
     {
-        $this->is_fullfilled = $is_fullfilled;
+        $this->fullfilled = $fullfilled;
 
         return $this;
     }
@@ -91,24 +91,24 @@ class Feedback
 
     public function isIsLate(): ?bool
     {
-        return $this->is_late;
+        return $this->late;
     }
 
-    public function setIsLate(bool $is_late): static
+    public function setLate(bool $late): static
     {
-        $this->is_late = $is_late;
+        $this->late = $late;
 
         return $this;
     }
 
     public function getOrder(): ?Order
     {
-        return $this->Order_;
+        return $this->order_;
     }
 
-    public function setOrder(Order $Order_): static
+    public function setOrder(Order $order_): static
     {
-        $this->Order_ = $Order_;
+        $this->order_ = $order_;
 
         return $this;
     }
