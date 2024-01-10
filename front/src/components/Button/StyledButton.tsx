@@ -2,14 +2,13 @@
 
 import React from "react"
 import StyledButtonComponent from "./StyledButton.styles"
-import Button from "@mui/material/Button"
 
 export const StyledButton = React.FC<PrimaryButtonProps> = (props) => {
   return (
     <StyledButtonComponent
-      variant={props.variant}
       disableElevation
       $type={props.type}
+      $width={props.width}
     >
       {props.label}
     </StyledButtonComponent>
@@ -18,6 +17,6 @@ export const StyledButton = React.FC<PrimaryButtonProps> = (props) => {
 
 export interface PrimaryButtonProps {
   label: string,
-  variant: string,
   type: string,
+  width?: number,
 }

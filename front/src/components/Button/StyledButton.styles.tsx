@@ -3,7 +3,7 @@ import styled, { css } from "styled-components"
 const StyledButtonComponent = styled.button<StyledButtonComponentProps>`
    ${({ theme, $type }) => css`
       color: white;
-      padding: 1% 2%;
+      padding: 3% 2%;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -27,7 +27,7 @@ const StyledButtonComponent = styled.button<StyledButtonComponentProps>`
    `
 
 export interface StyledButtonComponentProps {
-   $type: "primary" | "secondary"
+   $type: "primary" | "secondary",
 }
 
 export default StyledButtonComponent;
