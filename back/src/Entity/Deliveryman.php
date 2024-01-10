@@ -20,9 +20,9 @@ class Deliveryman extends User
     private ?int $nb_marks = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Vehicle $vehicle_id = null;
+    private ?Vehicle $vehicle = null;
 
-    #[ORM\OneToMany(mappedBy: 'deliveryman_id', targetEntity: Delivery::class)]
+    #[ORM\OneToMany(mappedBy: 'deliveryman', targetEntity: Delivery::class)]
     private Collection $deliveries;
 
     public function __construct()
@@ -66,14 +66,14 @@ class Deliveryman extends User
         return $this;
     }
 
-    public function getVehicleId(): ?Vehicle
+    public function getVehicle(): ?Vehicle
     {
-        return $this->vehicle_id;
+        return $this->vehicle;
     }
 
-    public function setVehicleId(?Vehicle $vehicle_id): static
+    public function setVehicle(?Vehicle $vehicle): static
     {
-        $this->vehicle_id = $vehicle_id;
+        $this->vehicle = $vehicle;
 
         return $this;
     }
@@ -90,7 +90,7 @@ class Deliveryman extends User
     {
         if (!$this->deliveries->contains($delivery)) {
             $this->deliveries->add($delivery);
-            $delivery->setDeliverymanId($this);
+            $delivery->setDeliveryman($this);
         }
 
         return $this;
@@ -100,8 +100,8 @@ class Deliveryman extends User
     {
         if ($this->deliveries->removeElement($delivery)) {
             // set the owning side to null (unless already changed)
-            if ($delivery->getDeliverymanId() === $this) {
-                $delivery->setDeliverymanId(null);
+            if ($delivery->getDeliveryman() === $this) {
+                $delivery->setDeliveryman(null);
             }
         }
 
