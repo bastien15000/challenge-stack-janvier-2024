@@ -82,9 +82,11 @@ class Order
         return $this->state;
     }
 
-    public function setState(State $state): void
+    public function setState(State $state): static
     {
         $this->state = $state;
+
+        return $this;
     }
 
     public function getDelivery(): ?Delivery

@@ -65,7 +65,7 @@ class Feedback
         return $this;
     }
 
-    public function isIsFullfilled(): ?bool
+    public function isFullfilled(): ?bool
     {
         return $this->fullfilled;
     }
@@ -89,7 +89,7 @@ class Feedback
         return $this;
     }
 
-    public function isIsLate(): ?bool
+    public function isLate(): ?bool
     {
         return $this->late;
     }

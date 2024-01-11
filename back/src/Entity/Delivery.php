@@ -109,4 +109,11 @@ class Delivery
 
         return $this;
     }
+
+    public function resetOrders(): static
+    {
+        $this->orders = new ArrayCollection();
+
+        return $this;
+    }
 }
