@@ -20,9 +20,6 @@ export const CurveChart = () => {
             type: 'line',
             data: data,
             options: {
-                layout: {
-                    padding: 50
-                },
                 plugins: {
                     legend: {
                         display: false // Supprimez la légende ici

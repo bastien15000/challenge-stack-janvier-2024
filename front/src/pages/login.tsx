@@ -12,9 +12,9 @@ function Login() {
     <Container>
       <PaperContainer elevation={3}>
         <Typography variant="h4" gutterBottom>Login</Typography>
-        <Input label="Identifiant" type="text"/>
-        <Input label="Mot de passe" type="text"/>
-        <StyledButton label="Connexion" type="primary"/>
+        <Input label="Identifiant" type="text" />
+        <Input label="Mot de passe" type="text" />
+        <StyledButton label="Connexion" type="primary" />
       </PaperContainer>
     </Container>
   )

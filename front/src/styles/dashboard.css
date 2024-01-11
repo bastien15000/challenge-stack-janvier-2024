@@ -1,0 +1,48 @@
+.graphs-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.main-graph {
+    display: flex;
+}
+
+.main-graph canvas {
+    width: 80%!important;
+}
+
+.datas {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.data {
+    border-radius: 20px;
+    background: #F1F1EF;
+    padding: 10px;
+}
+
+.data-content {
+    font-size: 40px;
+    color: #730C44;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.secondary-graphs {
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.secondary-graph {
+    width: 33%;
+    gap: 10px;
+}
+
+.secondary-graph canvas {
+    width: 100%;
+}

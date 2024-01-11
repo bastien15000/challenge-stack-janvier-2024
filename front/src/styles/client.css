@@ -1,0 +1,38 @@
+.client-list {
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.client-delivery {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.client-info {
+    width: 40%;
+    display: flex;
+    gap: 20px;
+}
+
+.client-delivery > *:not(:first-child) {
+    width: 20%;
+}
+
+.state-circle {
+    background-color: #000;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+}
+
+.state-circle.green {
+    background-color: #36DF84;
+}
+.state-circle.orange {
+    background-color: #FFAC0C;
+}
