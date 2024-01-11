@@ -1,5 +1,5 @@
-import React from "react";
-import Select from 'react-select'
+import React from "react"
+import Select from "react-select"
 import { Input } from "@/components/Input/Input"
 
 export const SelectBox: React.FC<SelectBoxProps> = (props) => {

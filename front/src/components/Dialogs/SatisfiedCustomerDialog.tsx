@@ -9,12 +9,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
 import { StyledButton } from "@/components/Button/StyledButton"
 import { SelectBox } from "@/components/Input/SelectBox"
-import { Input } from "@/components/Input/Input"
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
-import FormLabel from '@mui/material/FormLabel'
 import Rating from '@mui/material/Rating'
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
