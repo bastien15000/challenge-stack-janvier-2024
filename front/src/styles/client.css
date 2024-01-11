@@ -1,9 +1,10 @@
 .client-list {
-    background: #eee;
+    border: 0.2rem solid whitesmoke ;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    border-radius: 1.5rem;
 }
 
 .client-delivery {

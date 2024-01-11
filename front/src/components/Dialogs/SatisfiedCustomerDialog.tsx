@@ -89,7 +89,6 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           <br/>
           <Button variant="contained" type="submit">Valider</Button>
         </div>
-      {/* </BootstrapDialog>   */}
       </Container>
     </React.Fragment>
   )
