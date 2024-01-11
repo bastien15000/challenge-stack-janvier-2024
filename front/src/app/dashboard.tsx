@@ -33,17 +33,15 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
             </div>
             <MetricsData>
               <BoxData content="20" titre="ceci est le titre"/>
+              <BoxData content="20" titre="ceci est le titre"/>
+              <BoxData content="20" titre="ceci est le titre"/>
             </MetricsData>
           </ContentsContainer>
         </DataContainer>
+        <br/>
+        <br/>
         <DataContainer>
-        <CurveChart
-                labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
-                data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
-                tension={0.5}
-                borderColor="#E81386"
-                backgroundColor="#E81386"
-              />
+        
               <CurveChart
                 labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
                 data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
