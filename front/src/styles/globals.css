@@ -46,15 +46,6 @@ legend {
   width: 100%!important;
 }
 
-.MuiRating-root label {
-  width: 20%;
-  margin-left: 5%;
-}
-
-.hidden, label.css-dqr9h-MuiRating-label:nth-child(9), #\:r7\:, html body.__className_e66fe9 div.MuiDialog-root.MuiModal-root.css-153eyq5-MuiModal-root-MuiDialog-root div.MuiDialog-container.MuiDialog-scrollPaper.css-hz1bth-MuiDialog-container div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper div div.MuiFormControl-root.css-1nrlq1o-MuiFormControl-root span.MuiRating-root.MuiRating-sizeMedium.css-iljtu2-MuiRating-root label.MuiRating-label.MuiRating-pristine.css-dqr9h-MuiRating-label {
-  display: none;
-}
-
 .rose {
   background-color: var(--pink);
 }
