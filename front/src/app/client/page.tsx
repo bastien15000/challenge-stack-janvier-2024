@@ -11,7 +11,6 @@ function Client() {
   return (
     <Layout>
       <SatisfiedCustomerDialog />
-      
     </Layout>
   )
 }

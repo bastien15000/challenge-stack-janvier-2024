@@ -15,7 +15,6 @@
     width: 20%;
     display: flex;
     align-items: center;
-    flex-direction: column;
     gap: 30px;
 }
 .data {

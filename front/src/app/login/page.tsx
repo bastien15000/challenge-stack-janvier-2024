@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper"
 import styled, { css } from "styled-components"
 import Typography from '@mui/material/Typography'
 import { Input } from "@/components/Input/Input"
-import { StyledButton } from "@/components/Button/StyledButton"
 import Button from "@mui/material/Button"
 
 function Login() {

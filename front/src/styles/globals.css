@@ -1,6 +1,13 @@
 :root {
   --background-: #FFF6FF;
-  --primary: #E81386;
+  --pink: #E81386;
+  --darkPink: #CA1677;
+  --admin: #FFAC0C;
+  --darkAdmin: #EAA011;
+  --deliveryMan: #165BAD;
+  --darkDeliveryMan: #104788;
+  --customer: #0E8B7C;
+  --darkCustomer: #0C675C;
   --drop-shadow: drop-shadow(0 4px 4px rgba(232, 19, 134, 0.15));
 }
 
@@ -21,7 +28,7 @@ body {
 }
 
 header {
-  background: var(--primary);
+  background: var(--pink);
   filter: drop-shadow(0 4px 4px rgba(232, 19, 134, 0.15));
   text-align: center;
 }
@@ -49,19 +56,19 @@ legend {
 }
 
 .rose {
-  background-color: var(--primary);
+  background-color: var(--pink);
 }
 
 .bleu {
-  background-color: #165BAD;
+  background-color: var(--deliveryMan);
 }
 
 .orange {
-  background-color: #FFAC0C;
+  background-color: var(--admin);
 }
 
 .vert {
-  background-color: #0E8B7C;
+  background-color: var(--customer);
 }
 
 #Client {
