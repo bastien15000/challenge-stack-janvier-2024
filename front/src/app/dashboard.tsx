@@ -1,5 +1,3 @@
-'use client'
-
 import React from "react"
 import "./../styles/dashboard.css"
 import styled from "styled-components"
@@ -7,6 +5,7 @@ import Typography from "@mui/material/Typography"
 import { Divider } from "@mui/material"
 import CurveChart from "@/components/Graphs/curveChart"
 import { BoxData } from "@/components/Graphs/boxData"
+import DoubleBar from "../components/Graphs/doubleBar"
 
 const Dashboard: React.FC<DashboardProps> = (props) =>  {
     return (
@@ -37,6 +36,28 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
             </MetricsData>
           </ContentsContainer>
         </DataContainer>
+        <DataContainer>
+        <CurveChart
+                labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+                data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+                tension={0.5}
+                borderColor="#E81386"
+                backgroundColor="#E81386"
+              />
+              <CurveChart
+                labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+                data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+                tension={0.5}
+                borderColor="#E81386"
+                backgroundColor="#E81386"
+              />
+              <DoubleBar
+                labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+                data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+                tension={0.5}
+                borderColor="#E81386"
+                backgroundColor="#E81386"
+              /></DataContainer>
       </div>
     )
 }

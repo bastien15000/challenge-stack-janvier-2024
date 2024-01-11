@@ -5,7 +5,7 @@ export const BarChart = () => {
     const chartRef = useRef();
 
     useEffect(() => {
-        const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const labels = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', "samedi", "dimanche"];
         const data = {
             labels: labels,
             datasets: [{
