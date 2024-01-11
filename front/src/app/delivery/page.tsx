@@ -7,7 +7,10 @@ import "../../styles/client.css"
 import { Api } from "@/services/api"
 
 function Delivery() {
-  Api.ajax("deliveries", "GET")
+  Api.ajax("orders", "GET")
+    .then(data => {
+      console.log(data.content)
+    })
   return (
     <Layout>
       <div className="client-list">

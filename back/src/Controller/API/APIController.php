@@ -14,19 +14,21 @@ class APIController extends AbstractController implements TokenAuthenticatedCont
 
     private string $ALLOWED_FORMAT = "application/json";
 
-    public function __construct (
+    public function __construct(
         private readonly ValidatorInterface $validator
-    ) {}
+    ) {
+    }
 
-    protected function handleException(\Exception $e): JsonResponse {
+    protected function handleException(\Exception $e): JsonResponse
+    {
         return $this->json([
             'status' => $e->getCode(),
             'content' => $e->getMessage()
         ], 500);
     }
 
-    protected function verifyFormatAllowed(?string $contentType): void {
-
+    protected function verifyFormatAllowed(?string $contentType): void
+    {
         if ($contentType !== $this->ALLOWED_FORMAT) {
             throw new NotAcceptableHttpException('Le format n\'est pas autorisé');
         }
