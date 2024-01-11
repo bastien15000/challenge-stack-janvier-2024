@@ -24,6 +24,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export const SatisfiedCustomerDialog = React.FC = () => {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState<number | null>(2)
+  const [value2, setValue2] = React.useState<number | null>(2)
   const options = [{ value: 'Casse', label: 'Unité cassé' },{ value: 'Incomplet', label: 'Livraison incompléte' },{ value: 'Retard', label: 'Livraison en retard' }];
   const handleClickOpen = () => {
     setOpen(true)
@@ -65,7 +66,7 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           </IconButton>
           <FormControl>
             <br/>
-            <Typography component="legend">Note du livreur</Typography>
+            <Typography component="legend">Êtes-vous satisfait de votre livraison ?</Typography>
             <Rating
               name="simple-controlled"
               value={value}
@@ -89,7 +90,18 @@ export const SatisfiedCustomerDialog = React.FC = () => {
             <br/> 
             <SelectBox id="Observation2" label="Observation" options={options}/>
           </div>
-
+          <FormControl>
+            <br/>
+            <Typography component="legend">Note du livreur</Typography>
+            <Rating
+              name="simple-controlled2"
+              value={value2}
+              onChange={(event, newValue2) => {
+                if (newValue2 == 5) {newValue2 = 4}
+                setValue2(newValue2);
+              }}
+            />
+          </FormControl>
           
 
           <br/>
