@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react"
+import { Api } from "@/services/api"
 
 export const BoxData: React.FC<BoxData> = (props) => {
   const [infoBox, setInfoBox] = useState([]) // Initialisation de l'état
