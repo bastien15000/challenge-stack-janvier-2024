@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Entity\DeliveryComment;
 use App\Repository\DeliveryCommentRepository;
+use App\Repository\DeliveryRepository;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -12,7 +13,7 @@ class DeliveryCommentService {
 
     public function __construct (
         private readonly DeliveryCommentRepository $deliveryCommentRepository,
-        private readonly DeliveryService $deliveryService
+        private readonly DeliveryRepository $deliveryRepository
     ) {}
 
     public function getDeliveryComments(): array
@@ -96,7 +97,7 @@ class DeliveryCommentService {
                 $invalid = false;
             }
             if (property_exists($deliveryComment_informations, 'delivery')) {
-                $delivery = $this->deliveryService->getDelivery($deliveryComment_informations->delivery);
+                $delivery = $this->deliveryRepository->findOneBy(['id' => $deliveryComment_informations->delivery]);
                 $cDeliveryComment->setDelivery($delivery);
                 $invalid = false;
             }

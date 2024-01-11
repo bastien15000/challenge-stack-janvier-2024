@@ -4,6 +4,9 @@ namespace App\Services;
 
 use App\Entity\Order;
 use App\Entity\State;
+use App\Repository\CustomerRepository;
+use App\Repository\DeliveryRepository;
+use App\Repository\FeedbackRepository;
 use App\Repository\OrderRepository;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
@@ -12,10 +15,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class OrderService {
 
     public function __construct (
-        private readonly OrderRepository $orderRepository,
-        private readonly FeedbackService $feedbackService,
-        private readonly DeliveryService $deliveryService,
-        private readonly CustomerService $customerService
+        private readonly OrderRepository    $orderRepository,
+        private readonly FeedbackRepository $feedbackRepository,
+        private readonly DeliveryRepository $deliveryRepository,
+        private readonly CustomerRepository $customerRepository
     ) {}
 
     public function getOrders(): array
@@ -101,12 +104,12 @@ class OrderService {
                 $invalid = false;
             }
             if (property_exists($order_informations, 'delivery')) {
-                $delivery = $this->deliveryService->getDelivery($order_informations->delivery);
+                $delivery = $this->deliveryRepository->findOneBy(['id' => $order_informations->delivery]);
                 $cOrder->setDelivery($delivery);
                 $invalid = false;
             }
             if (property_exists($order_informations, 'feedback')) {
-                $feedback = $this->feedbackService->getFeedback($order_informations->feedback);
+                $feedback = $this->feedbackRepository->findOneBy(['id' => $order_informations->feedback]);
                 $cOrder->setFeedback($feedback);
                 $invalid = false;
             }
@@ -115,7 +118,7 @@ class OrderService {
                 $invalid = false;
             }
             if (property_exists($order_informations, 'customer')) {
-                $customer = $this->customerService->getCustomer($order_informations->customer);
+                $customer = $this->customerRepository->findOneBy(['id' => $order_informations->customer]);
                 $cOrder->setCustomer($customer);
                 $invalid = false;
             }

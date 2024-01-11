@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class FeedbackService {
 
     public function __construct (
-        private FeedbackRepository $feedbackRepository
+        private readonly FeedbackRepository $feedbackRepository
     ) {}
 
     public function getFeedbacks(): array
