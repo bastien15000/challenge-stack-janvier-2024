@@ -7,7 +7,7 @@ const CurveChart: React.FC<ChartData> = (props) => {
     const [info, setInfos] = useState([]) // Initialisation de l'état
 
     useEffect(() => {
-        Api.ajax("kpi", "GET")
+        Api.ajax("kpi/serviceRate", "GET")
       .then(data => {
         setInfos(data.perDays) // Mise à jour de l'état avec les nouvelles données
         const config = {
