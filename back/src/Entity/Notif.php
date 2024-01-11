@@ -2,15 +2,10 @@
 
 namespace App\Entity;
 
+use App\Enum\NotifType;
 use App\Repository\NotifRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
-enum Type: string {
-    case Info = "info";
-    case Warning = "attention";
-    case Alert = "alerte";
-}
 
 #[ORM\Entity(repositoryClass: NotifRepository::class)]
 class Notif
@@ -28,8 +23,8 @@ class Notif
     #[ORM\JoinColumn(nullable: false)]
     private ?Order $order_ = null;
 
-    #[ORM\Column(type: 'string', enumType: Type::class)]
-    private ?Type $type = null;
+    #[ORM\Column(type: 'string', enumType: NotifType::class)]
+    private ?NotifType $type = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $value = null;
@@ -63,14 +58,16 @@ class Notif
         return $this;
     }
 
-    public function getType(): Type
+    public function getType(): NotifType
     {
         return $this->type;
     }
 
-    public function setType(Type $type): void
+    public function setType(NotifType $type): static
     {
         $this->type = $type;
+
+        return $this;
     }
 
     public function getValue(): ?string

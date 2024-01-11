@@ -2,18 +2,12 @@
 
 namespace App\Entity;
 
+use App\Enum\OrderState;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
-enum State: string {
-    case Incoming = "à livrer";
-    case Ongoing = "en cours de livraison";
-    case Delivered = "livrée";
-    case Cancelled = "annulée";
-}
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
@@ -27,8 +21,8 @@ class Order
     #[ORM\Column]
     private ?int $quantity = null;
 
-    #[ORM\Column(type: 'string', enumType: State::class)]
-    private ?State $state = null;
+    #[ORM\Column(type: 'string', enumType: OrderState::class)]
+    private ?OrderState $state = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     private ?Delivery $delivery = null;
@@ -77,12 +71,12 @@ class Order
         return $this;
     }
 
-    public function getState(): State
+    public function getState(): OrderState
     {
         return $this->state;
     }
 
-    public function setState(State $state): static
+    public function setState(OrderState $state): static
     {
         $this->state = $state;
 

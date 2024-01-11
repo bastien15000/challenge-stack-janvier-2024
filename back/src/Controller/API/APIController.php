@@ -2,13 +2,14 @@
 
 namespace App\Controller\API;
 
+use App\Controller\TokenAuthenticatedController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class APIController extends AbstractController
+class APIController extends AbstractController implements TokenAuthenticatedController
 {
 
     private string $ALLOWED_FORMAT = "application/json";
