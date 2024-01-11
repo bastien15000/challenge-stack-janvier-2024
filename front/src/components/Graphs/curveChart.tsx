@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import { Api } from "@/services/api"
 
 const CurveChart: React.FC<ChartData> = (props) => {
     const chartRef = useRef();
