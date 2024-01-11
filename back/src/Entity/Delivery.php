@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: DeliveryRepository::class)]
 class Delivery
@@ -14,6 +15,7 @@ class Delivery
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['list_deliveries'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'deliveries')]
@@ -21,12 +23,14 @@ class Delivery
     private ?Deliveryman $deliveryman = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['list_deliveries'])]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\OneToOne(mappedBy: 'delivery', cascade: ['persist', 'remove'])]
     private ?DeliveryComment $deliveryComment = null;
 
     #[ORM\OneToMany(mappedBy: 'delivery', targetEntity: Order::class)]
+    #[Groups(['list_deliveries'])]
     private Collection $orders;
 
     public function __construct()
