@@ -63,3 +63,8 @@ legend {
 .vert {
   background-color: #0E8B7C;
 }
+
+#Client {
+  width: 50%;
+  margin-left: 25%;
+}

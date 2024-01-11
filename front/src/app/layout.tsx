@@ -17,7 +17,7 @@ export default function RootLayout({
     case("/delivery"):
       couleur = "bleu";
       break
-    case("/customer"):
+    case("/client"):
       couleur = "vert";
       break
     case("/"):

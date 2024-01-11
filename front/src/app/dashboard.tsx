@@ -1,6 +1,7 @@
 'use client';
 import { CurveChart } from "../components/Graphs/curve"
 import { BarChart } from "../components/Graphs/bar"
+import { BoxData } from "../components/Graphs/boxData"
 import "./../styles/dashboard.css"
 
 export default function Dashboard() {
@@ -9,18 +10,9 @@ export default function Dashboard() {
             <div className="main-graph">
                 <CurveChart />
                 <div className="datas">
-                    <div className="data">
-                        <p className="stat-title">Stat 1</p>
-                        <p className="data-content">20</p>
-                    </div>
-                    <div className="data">
-                        <p className="stat-title">Stat 2</p>
-                        <p className="data-content">20</p>
-                    </div>
-                    <div className="data">
-                        <p className="stat-title">Stat 3</p>
-                        <p className="data-content">20</p>
-                    </div>
+                    <BoxData titre="Stat1" content="40"/>
+                    <BoxData titre="Stat2" content="30"/>
+                    <BoxData titre="Stat3" content="18"/>
                 </div>
             </div>
             <div className="secondary-graphs" style={{ display: 'flex' }}>
