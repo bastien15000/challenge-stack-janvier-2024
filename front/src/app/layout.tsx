@@ -12,12 +12,25 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  let couleur = "rose";
+  switch(window.location.pathname) {
+    case("/delivery"):
+      couleur = "bleu";
+      break
+    case("/client"):
+      couleur = "vert";
+      break
+    case("/"):
+      couleur = "orange";
+      break
+  }
+  let img = "/" + couleur + ".png"
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={inter.className}>
-        <header>
+        <header className={couleur}>
           <Image
-            src="/logo.png"
+            src={img}
             alt="Vercel Logo"
             width={318}
             height={80}

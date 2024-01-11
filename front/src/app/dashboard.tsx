@@ -1,39 +1,72 @@
-'use client';
-import { CurveChart } from "../components/Graphs/curve"
-import { BarChart } from "../components/Graphs/bar"
-import "./../styles/dashboard.css"
+'use client'
 
-export default function Dashboard() {
+import React from "react"
+import "./../styles/dashboard.css"
+import styled from "styled-components"
+import Typography from "@mui/material/Typography"
+import { Divider } from "@mui/material"
+import CurveChart from "@/components/Graphs/curveChart"
+import { BoxData } from "@/components/Graphs/boxData"
+
+const Dashboard: React.FC<DashboardProps> = (props) =>  {
     return (
-        <main className="graphs-container">
-            <div className="main-graph">
-                <CurveChart />
-                <div className="datas">
-                    <div className="data">
-                        <p className="stat-title">Stat 1</p>
-                        <p className="data-content">20</p>
-                    </div>
-                    <div className="data">
-                        <p className="stat-title">Stat 2</p>
-                        <p className="data-content">20</p>
-                    </div>
-                    <div className="data">
-                        <p className="stat-title">Stat 3</p>
-                        <p className="data-content">20</p>
-                    </div>
-                </div>
+      <div>
+        <DataContainer>
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            <Typography variant="h5">{props.title}</Typography>
+          </div>
+          <br/>
+          <Divider light/>
+          <br/>
+          <ContentsContainer>
+            <div>
+              <CurveChart
+                labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+                data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+                tension={0.5}
+                borderColor="#E81386"
+                backgroundColor="#E81386"
+              />
             </div>
-            <div className="secondary-graphs" style={{ display: 'flex' }}>
-                <div className="secondary-graph">
-                    <CurveChart />
-                </div>
-                <div className="secondary-graph">
-                    <CurveChart />
-                </div>
-                <div className="secondary-graph">
-                    <CurveChart />
-                </div>
-            </div>
-        </main>
+            <MetricsData>
+              <BoxData content="20" titre="ceci est le titre"/>
+            </MetricsData>
+          </ContentsContainer>
+        </DataContainer>
+      </div>
     )
 }
+
+export const DataContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100rem;
+    height: auto;
+    padding: 1rem 3rem;
+    background-color: white;
+    border-radius: 1rem;
+    align-content: center;
+`
+
+export const ContentsContainer = styled.div`
+    display: grid;
+    grid-template-rows: 60% 40%;
+`
+
+export const MetricsData = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 13rem;
+`
+
+export interface DashboardProps {
+  title: string,
+}
+
+export default Dashboard

@@ -1,6 +1,13 @@
 :root {
   --background-: #FFF6FF;
-  --primary: #E81386;
+  --pink: #E81386;
+  --darkPink: #CA1677;
+  --admin: #FFAC0C;
+  --darkAdmin: #EAA011;
+  --deliveryMan: #165BAD;
+  --darkDeliveryMan: #104788;
+  --customer: #0E8B7C;
+  --darkCustomer: #0C675C;
   --drop-shadow: drop-shadow(0 4px 4px rgba(232, 19, 134, 0.15));
 }
 
@@ -21,7 +28,7 @@ body {
 }
 
 header {
-  background: var(--primary);
+  background: var(--pink);
   filter: drop-shadow(0 4px 4px rgba(232, 19, 134, 0.15));
   text-align: center;
 }
@@ -41,5 +48,30 @@ legend {
 
 .MuiRating-root label {
   width: 20%;
-  margin-left: 10%;
+  margin-left: 5%;
+}
+
+.hidden, label.css-dqr9h-MuiRating-label:nth-child(9), #\:r7\:, html body.__className_e66fe9 div.MuiDialog-root.MuiModal-root.css-153eyq5-MuiModal-root-MuiDialog-root div.MuiDialog-container.MuiDialog-scrollPaper.css-hz1bth-MuiDialog-container div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-1t1j96h-MuiPaper-root-MuiDialog-paper div div.MuiFormControl-root.css-1nrlq1o-MuiFormControl-root span.MuiRating-root.MuiRating-sizeMedium.css-iljtu2-MuiRating-root label.MuiRating-label.MuiRating-pristine.css-dqr9h-MuiRating-label {
+  display: none;
+}
+
+.rose {
+  background-color: var(--pink);
+}
+
+.bleu {
+  background-color: var(--deliveryMan);
+}
+
+.orange {
+  background-color: var(--admin);
+}
+
+.vert {
+  background-color: var(--customer);
+}
+
+#Client {
+  width: 50%;
+  margin-left: 25%;
 }

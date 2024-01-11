@@ -12,21 +12,41 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        // Création de 5 commandes par livraison, par livreur
-        $nb_order = 1;
+        // Création de 5 commandes par journée de livraison, par livreur
+        $nbOrder = 1;
         for ($i = 1; $i <= 5; $i++) {
             for ($j = 1; $j <= 10; $j++) {
                 for ($k = 1; $k <= 5; $k++) {
-                    $modulo_customer = $nb_order % 30 + 1;
-                    $customer = $this->getReference("customer{$modulo_customer}");
+                    $moduloCustomer = $nbOrder % 30 + 1;
+                    $customer = $this->getReference("customer{$moduloCustomer}");
 
-                    $modulo_delivery = $nb_order % 50 + 1;
-                    $delivery = $this->getReference("delivery{$modulo_delivery}");
+                    $moduloDelivery = $nbOrder % 50 + 1;
+                    $delivery = $this->getReference("delivery{$moduloDelivery}");
 
                     $order = $this->createOrder($customer, $delivery);
-                    $nb_order++;
+
                     $manager->persist($order);
+
+                    $nbOrder++;
                 }
+            }
+        }
+
+        // Création de 5 commandes par lundi de livraison, par livreur
+        $nbOrderDelivered = 1;
+        for ($ii = 1; $ii <= 10; $ii++) {
+            $mondayDelivery = $this->getReference("mondayDelivery{$ii}");
+
+            for ($jj = 1; $jj <= 5; $jj++) {
+                $moduloCustomer = $nbOrderDelivered % 30 + 1;
+                $customer = $this->getReference("customer{$moduloCustomer}");
+                $orderDelivered = $this->createOrderDelivered($customer, $mondayDelivery);
+
+                $manager->persist($orderDelivered);
+
+                $this->addReference("orderDelivered{$nbOrderDelivered}", $orderDelivered);
+
+                $nbOrderDelivered++;
             }
         }
 
@@ -35,8 +55,9 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
     private function createOrder($customer, $delivery): Order
     {
-        $startDate = new \DateTime('2024-01-09 08:00');
-        $endDate = new \DateTime('2024-01-13 18:00');
+        $deliveryDate = $delivery->getDate();
+        $startDate = $deliveryDate->modify("+ 8 hour");
+        $endDate = $deliveryDate->modify("+ 18 hour");
 
         $randomDate = mt_rand($startDate->getTimestamp(), $endDate->getTimestamp());
         $date = (new \DateTime())->setTimestamp($randomDate);
@@ -45,6 +66,28 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
         $order
             ->setQuantity(mt_rand(100, 10000))
             ->setState(OrderState::Incoming)
+            ->setCustomer($customer)
+            ->setDelivery($delivery)
+            ->setComment("Commentaire de la commande")
+            ->setExpectedTime($date)
+            ->setStartTime(null) // La date de début est nulle par défaut
+            ->setEndTime(null); // La date de fin est nulle par défaut
+
+        return $order;
+    }
+
+    private function createOrderDelivered($customer, $delivery): Order
+    {
+        $startDate = new \DateTime('2024-01-08 08:00');
+        $endDate = new \DateTime('2024-01-08 18:00');
+
+        $randomDate = mt_rand($startDate->getTimestamp(), $endDate->getTimestamp());
+        $date = (new \DateTime())->setTimestamp($randomDate);
+
+        $order = new Order();
+        $order
+            ->setQuantity(mt_rand(100, 10000))
+            ->setState(OrderState::Delivered)
             ->setCustomer($customer)
             ->setDelivery($delivery)
             ->setComment("Commentaire de la commande")

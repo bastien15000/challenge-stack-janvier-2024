@@ -2,28 +2,18 @@
 
 import * as React from 'react'
 import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import Dialog from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
-import { StyledButton } from "@/components/Button/StyledButton"
 import { SelectBox } from "@/components/Input/SelectBox"
 import FormControl from '@mui/material/FormControl'
 import Rating from '@mui/material/Rating'
-
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(2),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(1),
-  },
-}));
+import styled from "styled-components"
 
 export const SatisfiedCustomerDialog = React.FC = () => {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState<number | null>(2)
+  const [value2, setValue2] = React.useState<number | null>(2)
   const options = [{ value: 'Casse', label: 'Unité cassé' },{ value: 'Incomplet', label: 'Livraison incompléte' },{ value: 'Retard', label: 'Livraison en retard' }];
   const handleClickOpen = () => {
     setOpen(true)
@@ -33,15 +23,8 @@ export const SatisfiedCustomerDialog = React.FC = () => {
   }
 
   return (
-    <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open satisfied customer dialog
-      </Button>
-      <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
+    <React.Fragment >
+      <Container id="Client">
         <div style={{
           height: "100%",
           margin: "3rem",
@@ -61,31 +44,64 @@ export const SatisfiedCustomerDialog = React.FC = () => {
             }}
           >
             <CloseIcon/>
+            
           </IconButton>
-          <div id="ObservationBlock">
-            <SelectBox id="Observation1" label="Observation" options={options}/>
-            <br/> 
-            <SelectBox id="Observation2" label="Observation" options={options}/>
-          </div>
-
           <FormControl>
-            
-            
             <br/>
-            <Typography component="legend">Note du livreur</Typography>
+            <Typography component="legend">Êtes-vous satisfait de votre livraison ?</Typography>
             <Rating
               name="simple-controlled"
               value={value}
               onChange={(event, newValue) => {
+                if (newValue >= 3) {
+                  // Correction du bug 5 etoiles sur 4
+                  if (newValue == 5) {newValue = 4}
+                  document.getElementById("ObservationBlock").classList.add("hidden")
+                }
+                // Si la note est inférieur a 3 on affiche le formulaire de mécontentement
+                else if(newValue < 3 && newValue != null) {
+                  document.getElementById("ObservationBlock").classList.remove("hidden")
+                }
+
                 setValue(newValue);
               }}
             />
           </FormControl>
+          <div id="ObservationBlock" class="hidden">
+            <SelectBox id="Observation1" label="Observation" options={options}/>
+            <br/> 
+            <SelectBox id="Observation2" label="Observation" options={options}/>
+          </div>
+          <FormControl>
+            <br/>
+            <Typography component="legend">Note du livreur</Typography>
+            <Rating
+              name="simple-controlled2"
+              value={value2}
+              onChange={(event, newValue2) => {
+                if (newValue2 == 5) {newValue2 = 4}
+                setValue2(newValue2);
+              }}
+            />
+          </FormControl>
+          
 
           <br/>
           <Button variant="contained" type="submit">Valider</Button>
         </div>
-      </BootstrapDialog>
+      {/* </BootstrapDialog>   */}
+      </Container>
     </React.Fragment>
   )
 }
+
+export const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    padding: 3rem;
+    border: 0.2rem solid whitesmoke;
+`
