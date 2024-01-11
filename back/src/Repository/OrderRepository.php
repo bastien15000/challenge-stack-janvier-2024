@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use DatePeriod;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -34,5 +35,36 @@ class OrderRepository extends ServiceEntityRepository
     {
         $this->_em->remove($cOrder);
         $this->getEntityManager()->flush();
+    }
+
+    public function getWeeklyOrder(): array
+    {
+        $d = strtotime("today");
+
+        $start_week = strtotime("last monday midnight",$d);
+        $end_week = strtotime("next saturday",$d);
+
+        $start = date("Y-m-d",$start_week);
+        $end = date("Y-m-d",$end_week);
+
+        $start = new \DateTime($start);
+        $end = new \DateTime($end);
+
+        $interval = new \DateInterval('P1D');
+        $range = new DatePeriod($start, $interval, $end);
+
+        $result = [];
+
+        foreach ($range as $date) {
+
+            $result[] = $this->createQueryBuilder('o')
+                ->join('o.delivery', 'd')
+                ->andWhere('d.date = :date_')
+                ->setParameter('date_', $date->format('Y-m-d'))
+                ->getQuery()
+                ->getResult();
+        }
+
+        return $result;
     }
 }
