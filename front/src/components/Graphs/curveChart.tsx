@@ -5,6 +5,9 @@ const CurveChart: React.FC<ChartData> = (props) => {
     const chartRef = useRef();
 
     useEffect(() => {
+        Api.ajax("kpi/serviceRate", "GET")
+      .then(data => {
+        setInfos(data.perDays) // Mise à jour de l'état avec les nouvelles données
         const config = {
             type: 'line',
             data: {
