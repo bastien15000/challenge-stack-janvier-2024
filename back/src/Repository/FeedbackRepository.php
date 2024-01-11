@@ -21,28 +21,18 @@ class FeedbackRepository extends ServiceEntityRepository
         parent::__construct($registry, Feedback::class);
     }
 
-//    /**
-//     * @return Feedback[] Returns an array of Feedback objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function save(Feedback $feedback, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($feedback);
 
-//    public function findOneBySomeField($value): ?Feedback
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function delete(Feedback $cFeedback)
+    {
+        $this->_em->remove($cFeedback);
+        $this->getEntityManager()->flush();
+    }
 }

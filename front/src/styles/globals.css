@@ -30,3 +30,16 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+label {
+  z-index: 0!important;
+}
+
+legend {
+  width: 100%!important;
+}
+
+.MuiRating-root label {
+  width: 20%;
+  margin-left: 10%;
+}

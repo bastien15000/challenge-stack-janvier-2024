@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
 import { StyledButton } from "@/components/Button/StyledButton"
+import { SelectBox } from "@/components/Input/SelectBox"
 import { Input } from "@/components/Input/Input"
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
@@ -28,7 +29,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export const SatisfiedCustomerDialog = React.FC = () => {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState<number | null>(2)
-
+  const options = [{ value: 'Casse', label: 'Unité cassé' },{ value: 'Incomplet', label: 'Livraison incompléte' },{ value: 'Retard', label: 'Livraison en retard' }];
   const handleClickOpen = () => {
     setOpen(true)
   }
@@ -66,23 +67,15 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           >
             <CloseIcon/>
           </IconButton>
-          <Input label="Num" type="number"/>
-          <Input label="Combien d'unitées cassées" type="number"/>
+          <div id="ObservationBlock">
+            <SelectBox id="Observation1" label="Observation" options={options}/>
+            <br/> 
+            <SelectBox id="Observation2" label="Observation" options={options}/>
+          </div>
 
           <FormControl>
-            <FormLabel
-              id="demo-row-radio-buttons-group-label"
-            >
-              La totalité de la commande à t-elle été livrée ?
-            </FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel value="Oui" control={<Radio />} label="Oui" />
-              <FormControlLabel value="Non" control={<Radio />} label="Non" />
-            </RadioGroup>
+            
+            
             <br/>
             <Typography component="legend">Note du livreur</Typography>
             <Rating

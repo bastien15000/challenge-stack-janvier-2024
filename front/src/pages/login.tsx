@@ -13,7 +13,7 @@ function Login() {
       <PaperContainer elevation={3}>
         <Typography variant="h4" gutterBottom>Login</Typography>
         <Input label="Identifiant" type="text" />
-        <Input label="Mot de passe" type="text" />
+        <Input label="Mot de passe" type="password" />
         <StyledButton label="Connexion" type="primary" />
       </PaperContainer>
     </Container>

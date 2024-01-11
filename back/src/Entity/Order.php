@@ -8,6 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+enum State: string {
+    case Incoming = "à livrer";
+    case Ongoing = "en cours de livraison";
+    case Delivered = "livrée";
+    case Cancelled = "annulée";
+}
+
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
 class Order
@@ -20,15 +27,15 @@ class Order
     #[ORM\Column]
     private ?int $quantity = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $state = null;
+    #[ORM\Column(type: 'string', enumType: State::class)]
+    private ?State $state = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?Delivery $Delivery = null;
+    private ?Delivery $delivery = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Customer $Customer = null;
+    private ?Customer $customer = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comment = null;
@@ -42,10 +49,10 @@ class Order
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $end_time = null;
 
-    #[ORM\OneToOne(mappedBy: 'Order_', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'order_', cascade: ['persist', 'remove'])]
     private ?Feedback $feedback = null;
 
-    #[ORM\OneToMany(mappedBy: 'Order_', targetEntity: Notif::class)]
+    #[ORM\OneToMany(mappedBy: 'order_', targetEntity: Notif::class)]
     private Collection $notifs;
 
     public function __construct()
@@ -70,12 +77,12 @@ class Order
         return $this;
     }
 
-    public function getState(): ?string
+    public function getState(): State
     {
         return $this->state;
     }
 
-    public function setState(string $state): static
+    public function setState(State $state): static
     {
         $this->state = $state;
 
@@ -84,24 +91,24 @@ class Order
 
     public function getDelivery(): ?Delivery
     {
-        return $this->Delivery;
+        return $this->delivery;
     }
 
-    public function setDelivery(?Delivery $Delivery): static
+    public function setDelivery(?Delivery $delivery): static
     {
-        $this->Delivery = $Delivery;
+        $this->delivery = $delivery;
 
         return $this;
     }
 
     public function getCustomer(): ?Customer
     {
-        return $this->Customer;
+        return $this->customer;
     }
 
-    public function setCustomer(?Customer $Customer): static
+    public function setCustomer(?Customer $customer): static
     {
-        $this->Customer = $Customer;
+        $this->customer = $customer;
 
         return $this;
     }

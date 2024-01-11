@@ -59,7 +59,6 @@ export const DeliveryReports = React.FC = () => {
           >
             <CloseIcon/>
           </IconButton>
-          <Input label="Num" type="number"/>
           <Input label="Kilometrage" type="number"/>
           <Input label="Facture essences" type="number"/>
           <Input label="Prix peages" type="number"/>

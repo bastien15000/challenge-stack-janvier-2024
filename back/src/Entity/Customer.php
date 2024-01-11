@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CustomerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
@@ -13,11 +14,20 @@ class Customer extends User
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
-    #[ORM\OneToMany(mappedBy: 'Customer', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Order::class)]
     private Collection $orders;
 
-    #[ORM\OneToMany(mappedBy: 'Customer', targetEntity: Notif::class)]
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Notif::class)]
     private Collection $notifs;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $complement = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column]
+    private ?int $zipcode = null;
 
     public function __construct()
     {
@@ -93,6 +103,42 @@ class Customer extends User
                 $notif->setCustomer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getComplement(): ?string
+    {
+        return $this->complement;
+    }
+
+    public function setComplement(?string $complement): static
+    {
+        $this->complement = $complement;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getZipcode(): ?int
+    {
+        return $this->zipcode;
+    }
+
+    public function setZipcode(int $zipcode): static
+    {
+        $this->zipcode = $zipcode;
 
         return $this;
     }

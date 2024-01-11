@@ -6,7 +6,7 @@ import StyledButtonComponent from "./StyledButton.styles"
 export const StyledButton = React.FC<PrimaryButtonProps> = (props) => {
   return (
     <StyledButtonComponent
-      disableElevation
+      // disableElevation
       $type={props.type}
       $width={props.width}
     >
