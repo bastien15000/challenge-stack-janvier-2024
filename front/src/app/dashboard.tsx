@@ -32,9 +32,9 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
               />
             </div>
             <MetricsData>
-              <BoxData content="20" titre="ceci est le titre"/>
-              <BoxData content="20" titre="ceci est le titre"/>
-              <BoxData content="20" titre="ceci est le titre"/>
+              <BoxData content="20" titre="Total des commandes"/>
+              <BoxData content="20" titre="Total des commandes livrée"/>
+              <BoxData content="20" titre="Pourcentage livrée"/>
             </MetricsData>
           </ContentsContainer>
         </DataContainer>

@@ -1,17 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import { Api } from "@/services/api"
 
 const CurveChart: React.FC<ChartData> = (props) => {
     const chartRef = useRef();
+    const [info, setInfos] = useState([]) // Initialisation de l'état
 
     useEffect(() => {
+        Api.ajax("kpi", "GET")
+      .then(data => {
+        setInfos(data.perDays) // Mise à jour de l'état avec les nouvelles données
         const config = {
             type: 'line',
             data: {
                 labels: props.labels,
                 datasets: [{
                     label: '',
-                    data: props.data,
+                    data: info,
                     borderColor: props.borderColor,
                     backgroundColor: props.backgroundColor,
                     tension: props.tension
@@ -30,12 +35,12 @@ const CurveChart: React.FC<ChartData> = (props) => {
           chartRef.current,
           config
         );
-
         return () => {
             if (myChart) {
                 myChart.destroy();
             }
         };
+      })
     }, [])
 
     return (
