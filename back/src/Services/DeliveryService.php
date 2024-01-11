@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Entity\Delivery;
 use App\Repository\DeliveryRepository;
+use App\Repository\OrderRepository;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -11,8 +12,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DeliveryService {
 
     public function __construct (
-        private DeliveryRepository $deliveryRepository,
-        private OrderService $orderService
+        private readonly DeliveryRepository $deliveryRepository,
+        private readonly OrderRepository $orderRepository
     ) {}
 
     public function getDeliveries(): array
@@ -48,7 +49,7 @@ class DeliveryService {
             $cDelivery->resetOrders();
 
             foreach ($delivery->getOrders() as $orderId) {
-                $order = $this->orderService->getOrder($orderId);
+                $order = $this->orderRepository->findOneBy(['id' => $orderId]);
                 $cDelivery->addOrder($order);
             }
 
@@ -95,7 +96,7 @@ class DeliveryService {
                 $cDelivery->resetOrders();
 
                 foreach ($delivery_informations->orders as $orderId) {
-                    $order = $this->orderService->getOrder($orderId);
+                    $order = $this->orderRepository->findOneBy(['id' => $orderId]);
                     $cDelivery->addOrder($order);
                 }
                 $invalid = false;
