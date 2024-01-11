@@ -64,7 +64,7 @@ export const DeliveryReports = React.FC = () => {
           <Input label="Prix peages" type="number"/>
           <Input label="Commentaire" type="number"/>
           <br/>
-          <StyledButton label="Valider" type="primary"/>
+          <Button variant="contained" type="submit">Valider</Button>
         </div>
       </BootstrapDialog>
     </React.Fragment>

@@ -1,9 +1,15 @@
 import React from "react";
-import PinkBorderTextField from "./Input.styles"
+import TextField from "@mui/material/TextField"
 
 export const Input: React.FC<InputProps> = (props) => {
   return (
-    <div>ceci est notre input</div>
+    <TextField
+      id="outlined-basic"
+      label={props.label}
+      variant="outlined"
+      type={props.type}
+      color="primary"
+    />
   )
 }
 

@@ -64,7 +64,7 @@ export const CancelDialog = React.FC = () => {
           </IconButton>
           <Input label="Laissez un commentaire" type="text"/>
           <br/>
-          <StyledButton label="Valider" type="primary"/>
+          <Button variant="contained" type="submit">Valider</Button>
         </div>
       </BootstrapDialog>
     </React.Fragment>
