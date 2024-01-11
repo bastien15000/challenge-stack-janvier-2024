@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+#[Route('/api/deliveries', name: 'api_delivery')]
 class DeliveryController extends APIController
 {
     public function __construct (
