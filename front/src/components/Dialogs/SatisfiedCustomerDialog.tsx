@@ -83,7 +83,7 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           </FormControl>
 
           <br/>
-          <StyledButton label="Valider" type="primary"/>
+          <Button variant="contained" type="submit">Valider</Button>
         </div>
       </BootstrapDialog>
     </React.Fragment>

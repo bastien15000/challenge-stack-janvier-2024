@@ -32,7 +32,7 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 200,
             'content' => $deliverys
-        ]);
+        ], 200, [], ['groups' => 'list_deliveries']);
     }
 
     #[Route('/{id}', name: '_byId', methods: 'GET')]
@@ -51,7 +51,7 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 200,
             'content' => $delivery
-        ]);
+        ], 200, [], ['groups' => 'list_deliveries']);
     }
 
     #[Route('/deliveryman/{id}', name: '_byDeliveryMan', methods: 'GET')]
@@ -70,7 +70,7 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 200,
             'content' => $delivery
-        ]);
+        ], 200, [], ['groups' => 'list_deliveries']);
     }
 
     #[Route('', name: '_create', methods: 'POST')]
@@ -94,7 +94,7 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 201,
             'content' => $newDelivery
-        ], 201);
+        ], 201, [], ['groups' => 'list_deliveries']);
     }
 
     #[Route('/{id}', name: '_update_create', methods: 'PUT')]
@@ -118,7 +118,7 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 200,
             'content' => $delivery
-        ]);
+        ], 200, [], ['groups' => 'list_deliveries']);
     }
 
     #[Route('/{id}', name: '_delete', methods: 'DELETE')]
@@ -138,7 +138,7 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 200,
             'content' => $delivery
-        ]);
+        ], 200, [], ['groups' => 'list_deliveries']);
     }
 
     #[Route('/{id}', name: '_update', methods: 'PATCH')]
@@ -160,6 +160,6 @@ class DeliveryController extends APIController
         return $this->json([
             'status' => 200,
             'content' => $delivery
-        ]);
+        ], 200, [], ['groups' => 'list_deliveries']);
     }
 }

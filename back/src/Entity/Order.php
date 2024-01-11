@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
@@ -16,12 +17,15 @@ class Order
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['list_deliveries'])]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['list_deliveries'])]
     private ?int $quantity = null;
 
     #[ORM\Column(type: 'string', enumType: OrderState::class)]
+    #[Groups(['list_deliveries'])]
     private ?OrderState $state = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
@@ -29,12 +33,14 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['list_deliveries'])]
     private ?Customer $customer = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $comment = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups(['list_deliveries'])]
     private ?\DateTimeInterface $expected_time = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]

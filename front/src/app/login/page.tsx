@@ -6,6 +6,7 @@ import styled, { css } from "styled-components"
 import Typography from '@mui/material/Typography'
 import { Input } from "@/components/Input/Input"
 import { StyledButton } from "@/components/Button/StyledButton"
+import Button from "@mui/material/Button"
 
 function Login() {
   return (
@@ -14,13 +15,15 @@ function Login() {
         <Typography variant="h4" gutterBottom>Login</Typography>
         <Input label="Identifiant" type="text" />
         <Input label="Mot de passe" type="password" />
-        <StyledButton label="Connexion" type="primary" />
+        <Button variant="contained" type="submit" size="large">Connextion</Button>
       </PaperContainer>
     </Container>
   )
 }
 
 export const Container = styled.div`
+    margin-top: 5rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,11 +34,9 @@ export const PaperContainer = styled(Paper)`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-    height: 30rem;
-    width: 40%;
+    padding: 5rem;
+    height: auto;
+    width: 25%;
 `;
 
 export default Login;
