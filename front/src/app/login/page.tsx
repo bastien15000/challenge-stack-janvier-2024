@@ -14,7 +14,7 @@ function Login() {
         <Typography variant="h4" gutterBottom>Login</Typography>
         <Input label="Identifiant" type="text" />
         <Input label="Mot de passe" type="password" />
-        <Button variant="contained" type="submit" size="large">Connextion</Button>
+        <Button variant="contained" type="submit" size="large">Connexion</Button>
       </PaperContainer>
     </Container>
   )

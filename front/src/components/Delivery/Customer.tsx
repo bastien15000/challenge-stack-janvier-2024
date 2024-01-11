@@ -13,7 +13,7 @@ function Customer(props: { data: any }) {
           </div>
         </div>
         <div className="state">
-          <div className={`state-circle ${props.data.state}`}></div>
+          <p>{props.data.state}</p>
         </div>
         <div>
           <p>{props.data.address}</p>

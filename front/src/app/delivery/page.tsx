@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Delivery() {
-  const [orders, setOrders] = useState([]) // Initialisation de l'état
+  const [orders, setOrders] = useState([])
 
   useEffect(() => {
     Api.ajax("orders", "GET")
@@ -45,8 +45,8 @@ function Delivery() {
               img_src: "/Theraputics.png",
               name: "McDonalds",
               num: order?.id,
-              state: "green",
-              address: "2 rue du nord",
+              state: order.state,
+              address: `${order.customer.address} - ${order.customer.complement} - ${order.customer.zipcode}`,
               date: order.expected_time,
               actions: (
                 <IconButton aria-label="delete" size="large" onClick={() => console.log("je viens de supprimer cette livraison")}>
