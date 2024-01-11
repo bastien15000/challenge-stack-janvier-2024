@@ -20,6 +20,7 @@ final class Version20240110111428 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE DATABASE IF NOT EXISTS bigmap');
         $this->addSql('CREATE TABLE customer (id INT NOT NULL, address VARCHAR(255) NOT NULL, complement VARCHAR(255) DEFAULT NULL, city VARCHAR(255) NOT NULL, zipcode SMALLINT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE delivery (id INT AUTO_INCREMENT NOT NULL, deliveryman_id INT NOT NULL, date DATE NOT NULL, INDEX IDX_3781EC10793075C6 (deliveryman_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE delivery_comment (id INT AUTO_INCREMENT NOT NULL, delivery_id INT NOT NULL, km_start INT NOT NULL, km_end INT DEFAULT NULL, toll_rate DOUBLE PRECISION DEFAULT NULL, fuel_bill DOUBLE PRECISION DEFAULT NULL, comment LONGTEXT DEFAULT NULL, UNIQUE INDEX UNIQ_9E6AEDB212136921 (delivery_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -65,5 +66,6 @@ final class Version20240110111428 extends AbstractMigration
         $this->addSql('DROP TABLE user');
         $this->addSql('DROP TABLE vehicle');
         $this->addSql('DROP TABLE messenger_messages');
+        $this->addSql('DROP DATABASE bigmap');
     }
 }
