@@ -61,26 +61,36 @@ export const SatisfiedCustomerDialog = React.FC = () => {
             }}
           >
             <CloseIcon/>
+            
           </IconButton>
-          <div id="ObservationBlock">
-            <SelectBox id="Observation1" label="Observation" options={options}/>
-            <br/> 
-            <SelectBox id="Observation2" label="Observation" options={options}/>
-          </div>
-
           <FormControl>
-            
-            
             <br/>
             <Typography component="legend">Note du livreur</Typography>
             <Rating
               name="simple-controlled"
               value={value}
               onChange={(event, newValue) => {
+                if (newValue >= 3) {
+                  // Correction du bug 5 etoiles sur 4
+                  if (newValue == 5) {newValue = 4}
+                  document.getElementById("ObservationBlock").classList.add("hidden")
+                }
+                // Si la note est inférieur a 3 on affiche le formulaire de mécontentement
+                else if(newValue < 3 && newValue != null) {
+                  document.getElementById("ObservationBlock").classList.remove("hidden")
+                }
+
                 setValue(newValue);
               }}
             />
           </FormControl>
+          <div id="ObservationBlock" class="hidden">
+            <SelectBox id="Observation1" label="Observation" options={options}/>
+            <br/> 
+            <SelectBox id="Observation2" label="Observation" options={options}/>
+          </div>
+
+          
 
           <br/>
           <Button variant="contained" type="submit">Valider</Button>
