@@ -38,7 +38,7 @@ class DeliverymanFixtures extends Fixture implements DependentFixtureInterface
             ->setPassword($this->hasher->hashPassword($deliveryman, 'pass_1234'))
             ->setPhone($this->generateRandomPhoneNumber())
             ->setRoles(['ROLE_DELIVERYMAN'])
-            ->setSalary(mt_rand(2000, 4000)) // Salaire aléatoire entre 2000 et 4000
+            ->setSalary(mt_rand(1500, 3000)) // Salaire aléatoire entre 2000 et 4000
             ->setAverageMark(mt_rand(1, 10)) // Note moyenne aléatoire entre 1 et 10
             ->setNbMarks(mt_rand(0, 50)) // Nombre de notes aléatoire entre 0 et 50
             ->setVehicle($this->getReference("vehicle{$index}"));
@@ -49,7 +49,7 @@ class DeliverymanFixtures extends Fixture implements DependentFixtureInterface
     private function generateRandomPhoneNumber(): string
     {
         // Générer un numéro de téléphone factice pour l'exemple
-        return '+1' . mt_rand(100, 999) . '-' . mt_rand(100, 999) . '-' . mt_rand(1000, 9999);
+        return '+336' . mt_rand(00, 99) . mt_rand(00, 99) . mt_rand(00, 99) . mt_rand(00, 99);
     }
 
     /**
