@@ -12,14 +12,14 @@ import { SelectBox } from "@/components/Input/SelectBox"
 import FormControl from '@mui/material/FormControl'
 import Rating from '@mui/material/Rating'
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(2),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(1),
-  },
-}));
+// const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+//   '& .MuiDialogContent-root': {
+//     padding: theme.spacing(2),
+//   },
+//   '& .MuiDialogActions-root': {
+//     padding: theme.spacing(1),
+//   },
+// }));
 
 export const SatisfiedCustomerDialog = React.FC = () => {
   const [open, setOpen] = React.useState(false)
@@ -34,15 +34,16 @@ export const SatisfiedCustomerDialog = React.FC = () => {
   }
 
   return (
-    <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+    <React.Fragment >
+      <div id="Client">
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open satisfied customer dialog
-      </Button>
-      <BootstrapDialog
+      </Button> */}
+      {/* <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-      >
+      > */}
         <div style={{
           height: "100%",
           margin: "3rem",
@@ -107,7 +108,8 @@ export const SatisfiedCustomerDialog = React.FC = () => {
           <br/>
           <Button variant="contained" type="submit">Valider</Button>
         </div>
-      </BootstrapDialog>
+      {/* </BootstrapDialog>   */}
+      </div>
     </React.Fragment>
   )
 }
