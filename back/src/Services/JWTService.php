@@ -35,7 +35,11 @@ class JWTService
 
     public function verifyToken(string $token): bool
     {
-        $tokens = explode('.', $token);
+        $auth = explode(' ', $token);
+
+        if ($auth[0] != 'Bearer') return false;
+
+        $tokens = explode('.', $auth[1]);
 
         $signature = hash_hmac('sha256', $tokens[0] . "." . $tokens[1], $this->JWT_SECRET_KEY, true);
 
