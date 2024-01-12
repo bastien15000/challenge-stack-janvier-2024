@@ -19,7 +19,8 @@ export const DataContainer = styled.div`
     padding: 10px;
     justify-content: center;
     align-items: center;
-    width: auto;
+    width: 50%;
+    margin-left: 25%;
 `
 
 export interface BoxData {
