@@ -9,6 +9,7 @@ export const Input: React.FC<InputProps> = (props) => {
       variant="outlined"
       type={props.type}
       color="primary"
+      onChange={props.onChange}
     />
   )
 }
@@ -17,4 +18,5 @@ export interface InputProps {
   label: string,
   type: string,
   id?: string,
+  onChange?: () => void
 }

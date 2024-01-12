@@ -11,13 +11,13 @@ export const Api = {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.roles.includes("ROLE_MANAGER")) {
+                if (data.role.includes("ROLE_MANAGER")) {
                     // redirect("/")
                     window.location.href = "/"
-                } else if (data.roles.includes("ROLE_DELIVERYMAN")) {
+                } else if (data.role.includes("ROLE_DELIVERYMAN")) {
                     // redirect("/delivery")
                     window.location.href = "/delivery"
-                } else if (data.roles.includes("ROLE_CLIENT")) {
+                } else if (data.role.includes("ROLE_CUSTOMER")) {
                     // redirect("/client")
                     window.location.href = "/client"
                 }
