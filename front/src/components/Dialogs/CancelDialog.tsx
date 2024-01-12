@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography'
 import { StyledButton } from "@/components/Button/StyledButton"
 import { Input } from "@/components/Input/Input"
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+const BootstrapDialog: React.FC<CancelDialogDialogProps> = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
   },
@@ -22,23 +22,14 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const CancelDialog = React.FC = () => {
-  const [open, setOpen] = React.useState(false)
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-  const handleClose = () => {
-    setOpen(false)
-  }
-
+export const CancelDialog = React.FC = (props) => {
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open cancel dialog
-      </Button>
       <BootstrapDialog
-        onClose={handleClose}
+        handleClickOpen={props.handleClickOpen}
+        handleClose={props.handleClose}
+        onClose={props.onClose}
+        isOpen={props.isOpen}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
@@ -69,4 +60,10 @@ export const CancelDialog = React.FC = () => {
       </BootstrapDialog>
     </React.Fragment>
   )
+}
+
+export interface CancelDialogDialogProps {
+  isOpen: boolean,
+  handleClickOpen: () => void,
+  handleClose: () => void,
 }
