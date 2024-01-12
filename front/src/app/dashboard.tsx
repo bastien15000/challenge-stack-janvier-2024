@@ -33,7 +33,7 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
           <div>
             <CurveChart
               labels={['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', "Sam", "Dim"]}
-              data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+              data={[0, 100, 50, 30, 40, 50, 40, 30, 70, 80, 25, 40]}
               // data={info}
               tension={0.5}
               borderColor="#E81386"
@@ -41,9 +41,9 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
             />
           </div>
           <MetricsData>
-            <BoxData content="20" titre="Total des commandes" />
-            <BoxData content="20" titre="Total des commandes livrée" />
-            <BoxData content="20" titre="Pourcentage livrée par jours" />
+            <BoxData content="163" titre="Total des commandes" />
+            <BoxData content="141" titre="Total des commandes livrée" />
+            <BoxData content="87" titre="Pourcentage livrée par jours" />
           </MetricsData>
         </ContentsContainer>
       </DataContainer>
@@ -66,16 +66,17 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
         <ContentsContainer>
           <div>
             <CurveChart
-              labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
-              data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+              labels={['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', "Sam", "Dim"]}
+              data={[0, 100, 40, 50, -40, -30, 50]}
               tension={0.5}
               borderColor="#E81386"
               backgroundColor="#E81386"
             />
           </div>
           <MetricsData>
-            <BoxData content="20" titre="ceci est le titre" />
-            <BoxData content="20" titre="ceci est le titre" />
+            <BoxData content="80%" titre="Satisfaction client" />
+            <BoxData content="150€" titre="Cout moyen par livraison" />
+            <BoxData content="17L" titre="Efficacité énergétique" />
           </MetricsData>
         </ContentsContainer>
       </DataContainer>
@@ -96,17 +97,16 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
         <ContentsContainer>
           <div>
             <DoubleBar
-              labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
-              data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
+              labels={['Iveco', 'Mercedes', 'Volkswagen', 'ISUZU']}
+              data={[15, 30, 10, 20]}
               tension={0.5}
               borderColor="#E81386"
               backgroundColor="#E81386"
             />
           </div>
           <MetricsData>
-            <BoxData content="20" titre="Total des commandes" />
-            <BoxData content="20" titre="Total des commandes livrée" />
-            <BoxData content="20" titre="Pourcentage livrée par jours" />
+            <BoxData content="15L" titre="Consomamtion moyenne" />
+            <BoxData content="14L" titre="Consommation théorique moyenne" />
           </MetricsData>
         </ContentsContainer>
       </DataContainer>
