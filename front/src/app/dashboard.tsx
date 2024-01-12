@@ -31,7 +31,7 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
                 backgroundColor="#E81386"
               />
             </div>
-            <MetricsData>
+            <MetricsData style={{ marginTop: "0px",}}>
               <BoxData content="20" titre="ceci est le titre"/>
               <BoxData content="20" titre="ceci est le titre"/>
               <BoxData content="20" titre="ceci est le titre"/>
@@ -64,7 +64,7 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
                 backgroundColor="#E81386"
               />
             </div>
-            <MetricsData>
+            <MetricsData style={{ marginTop: "0px",}}>
               <BoxData content="20" titre="ceci est le titre"/>
               <BoxData content="20" titre="ceci est le titre"/>
             </MetricsData>
@@ -94,7 +94,7 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
                 backgroundColor="#E81386"
               />
             </div>
-            <MetricsData>
+            <MetricsData style={{ marginTop: "0px",}}>
               <BoxData content="20" titre="ceci est le titre"/>
               <BoxData content="20" titre="ceci est le titre"/>
             </MetricsData>
