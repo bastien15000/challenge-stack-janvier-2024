@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import { Api } from "@/services/api"
 
 const CurveChart: React.FC<ChartData> = (props) => {
     const chartRef = useRef();
@@ -27,10 +28,9 @@ const CurveChart: React.FC<ChartData> = (props) => {
         };
 
         var myChart = new Chart(
-          chartRef.current,
-          config
+            chartRef.current,
+            config
         );
-
         return () => {
             if (myChart) {
                 myChart.destroy();
@@ -39,13 +39,13 @@ const CurveChart: React.FC<ChartData> = (props) => {
     }, [])
 
     return (
-      <canvas ref={chartRef} id="myChart"></canvas>
+        <canvas ref={chartRef} id="myChart"></canvas>
     )
 }
 
 export interface ChartData {
     labels: string[];
-    data: number[];
+    data: Float32Array[];
     borderColor?: string;
     backgroundColor?: string;
     tension: number;
