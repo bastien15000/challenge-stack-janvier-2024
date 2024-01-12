@@ -55,9 +55,13 @@ class OrderFixtures extends Fixture implements DependentFixtureInterface
 
     private function createOrder($customer, $delivery): Order
     {
-        $deliveryDate = $delivery->getDate();
-        $startDate = $deliveryDate->modify("+ 8 hour");
-        $endDate = $deliveryDate->modify("+ 18 hour");
+        $deliveryDate = clone $delivery->getDate(); // Créer une copie pour éviter de modifier la date d'origine
+
+        $startDate = clone $deliveryDate; // Créer une copie indépendante pour startDate
+        $startDate->setTime(8, 0, 0); // Heure de début (08:00)
+
+        $endDate = clone $deliveryDate; // Créer une copie indépendante pour endDate
+        $endDate->setTime(18, 0, 0); // Heure de fin (18:00)
 
         $randomDate = mt_rand($startDate->getTimestamp(), $endDate->getTimestamp());
         $date = (new \DateTime())->setTimestamp($randomDate);
