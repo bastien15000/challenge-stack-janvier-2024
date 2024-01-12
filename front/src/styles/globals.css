@@ -29,7 +29,6 @@ body {
 
 header {
   background: var(--pink);
-  filter: drop-shadow(0 4px 4px rgba(232, 19, 134, 0.15));
   text-align: center;
 }
 
