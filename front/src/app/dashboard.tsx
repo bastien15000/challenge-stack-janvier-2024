@@ -14,7 +14,6 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
     .then(data => {
       var perDays = data.content.perDays
       perDays = perDays.map((perDay) => perDay / 100)
-      console.log(perDays)
       setInfos(perDays) // Mise à jour de l'état avec les nouvelles données
     })
   return (
@@ -25,7 +24,7 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
           alignItems: "center",
           justifyContent: "center",
         }}>
-          <Typography variant="h5">Ceci est le titre du premier graph</Typography>
+          <Typography variant="h5">Taux de service</Typography>
         </div>
         <br />
         <Divider light />
@@ -33,7 +32,7 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
         <ContentsContainer>
           <div>
             <CurveChart
-              labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
+              labels={['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', "Sam", "Dim"]}
               data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
               // data={info}
               tension={0.5}
@@ -42,9 +41,9 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
             />
           </div>
           <MetricsData>
-            <BoxData content="20" titre="ceci est le titre" />
-            <BoxData content="20" titre="ceci est le titre" />
-            <BoxData content="20" titre="ceci est le titre" />
+            <BoxData content="20" titre="Total des commandes" />
+            <BoxData content="20" titre="Total des commandes livrée" />
+            <BoxData content="20" titre="Pourcentage livrée par jours" />
           </MetricsData>
         </ContentsContainer>
       </DataContainer>
@@ -59,7 +58,7 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
           alignItems: "center",
           justifyContent: "center",
         }}>
-          <Typography variant="h5">Ceci est le titre du deuxieme graph</Typography>
+          <Typography variant="h5">Indice de Performance Logistique</Typography>
         </div>
         <br />
         <Divider light />
@@ -89,7 +88,7 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
           alignItems: "center",
           justifyContent: "center",
         }}>
-          <Typography variant="h5">Ceci est le titre du troisieme graph</Typography>
+          <Typography variant="h5">Consommation de carburants pour 100 km par type de véhicule</Typography>
         </div>
         <br />
         <Divider light />
