@@ -16,7 +16,7 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
             alignItems: "center",
             justifyContent: "center",
           }}>
-            <Typography variant="h5">{props.title}</Typography>
+            <Typography variant="h5">Ceci est le titre du premier graph</Typography>
           </div>
           <br/>
           <Divider light/>
@@ -38,10 +38,24 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
             </MetricsData>
           </ContentsContainer>
         </DataContainer>
+
         <br/>
         <br/>
+
+
         <DataContainer>
-        
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            <Typography variant="h5">Ceci est le titre du deuxieme graph</Typography>
+          </div>
+          <br/>
+          <Divider light/>
+          <br/>
+          <ContentsContainer>
+            <div>
               <CurveChart
                 labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
                 data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
@@ -49,13 +63,43 @@ const Dashboard: React.FC<DashboardProps> = (props) =>  {
                 borderColor="#E81386"
                 backgroundColor="#E81386"
               />
+            </div>
+            <MetricsData>
+              <BoxData content="20" titre="ceci est le titre"/>
+              <BoxData content="20" titre="ceci est le titre"/>
+            </MetricsData>
+          </ContentsContainer>
+        </DataContainer>
+        <br/>
+        <br/>
+
+        <DataContainer>
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            <Typography variant="h5">Ceci est le titre du troisieme graph</Typography>
+          </div>
+          <br/>
+          <Divider light/>
+          <br/>
+          <ContentsContainer>
+            <div>
               <DoubleBar
                 labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]}
                 data={[0, 100, 200, 300, 400, 500, 400, 300, 300, 200, 250, 400]}
                 tension={0.5}
                 borderColor="#E81386"
                 backgroundColor="#E81386"
-              /></DataContainer>
+              />
+            </div>
+            <MetricsData>
+              <BoxData content="20" titre="ceci est le titre"/>
+              <BoxData content="20" titre="ceci est le titre"/>
+            </MetricsData>
+          </ContentsContainer>
+        </DataContainer>
       </div>
     )
 }
@@ -73,15 +117,15 @@ export const DataContainer = styled.div`
 
 export const ContentsContainer = styled.div`
     display: grid;
-    grid-template-rows: 60% 40%;
+    grid-template-columns: 60% 40%;
 `
 
 export const MetricsData = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    gap: 10rem;
-    margin-top: 13rem;
+    gap: 1rem;
+    margin-top: 4rem;
 `
 
 export interface DashboardProps {
