@@ -10,14 +10,18 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function Delivery() {
-  const [orders, setOrders] = useState([])
+  const [delivery, setDelivery] = useState([])
 
   useEffect(() => {
-    Api.ajax("orders", "GET")
+    Api.ajax("deliveries/deliveryman/1578", "GET")
       .then(data => {
-        setOrders(data.content) // Mise à jour de l'état avec les nouvelles données
+        setDelivery(data.content)
       })
+
   }, [])
+
+  console.log(delivery.date)
+  console.log(delivery.orders)
 
   return (
     <Layout>
@@ -26,24 +30,24 @@ function Delivery() {
           <div className="client-info">
             <Chip label="Entreprise" sx={{ fontSize: "1.1rem", padding: "1rem" }} />
           </div>
-          <div className="state">
+          <div className="order-state">
             <Chip label="Statut" sx={{ fontSize: "1.1rem", padding: "1rem" }} />
           </div>
-          <div>
-            <Chip label="Adresse" sx={{ fontSize: "1.1rem", padding: "1rem" }} />
+          <div className="client-address">
+            <Chip label="Adresse" sx={{fontSize: "1.1rem", padding: "1rem"}}/>
           </div>
-          <div>
-            <Chip label="Date de livraison" sx={{ fontSize: "1.1rem", padding: "1rem" }} />
+          <div className="order-expected-time">
+            <Chip label="Date de livraison" sx={{fontSize: "1.1rem", padding: "1rem"}}/>
           </div>
-          <div>
-            <Chip label="Actions" sx={{ fontSize: "1.1rem", padding: "1rem" }} />
+          <div className="order-actions">
+            <Chip label="Actions" sx={{fontSize: "1.1rem", padding: "1rem"}}/>
           </div>
         </div>
         {
-          orders?.map(function (order) {
+          delivery?.orders?.map(function (order : any) {
             return <Customer data={{
               img_src: "/Theraputics.png",
-              name: "McDonalds",
+              phone: order.customer.phone,
               num: order?.id,
               state: order.state,
               address: `${order.customer.address} - ${order.customer.complement} - ${order.customer.zipcode}`,
