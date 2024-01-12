@@ -8,6 +8,7 @@ use App\Repository\OrderRepository;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use function Symfony\Component\Clock\now;
 
 class DeliveryService {
 
@@ -110,8 +111,14 @@ class DeliveryService {
         return $cDelivery;
     }
 
-    public function getDeliveryByDeliveryMan(string $id): Delivery
+    public function getDeliveryByDeliveryMan(string $id): Delivery | null
     {
-        return $this->deliveryRepository->findOneBy(['deliveryman' => $id]);
+        $d = strtotime("today");
+        $date = new \DateTime(date("Y-m-d", $d));
+
+        return $this->deliveryRepository->findOneBy([
+            'deliveryman' => $id,
+            'date' => $date
+        ]);
     }
 }
