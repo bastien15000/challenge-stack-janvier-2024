@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField"
 export const Input: React.FC<InputProps> = (props) => {
   return (
     <TextField
-      id="outlined-basic"
+      id={props.id}
       label={props.label}
       variant="outlined"
       type={props.type}
