@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.4",
+    "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.4",
     "chart.js": "^4.4.1",
     "next": "14.0.4",
